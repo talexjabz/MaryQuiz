@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_into_quiz_app">Sign into Quiz app</string>
+    <string name="sign_in">Sign In</string>
+    <string name="enter_user_id">Enter user id</string>
+    <string name="register">Register</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_email">Enter email</string>
+    <string name="register_with_quiz_app">Register with Quiz app</string>
+    <string name="you_are_required_to_scan_your_room">You are required to scan your room</string>
+    <string name="scan_room">Scan Room</string>
+    <string name="begin_quiz">Begin Quiz</string>
+    <string name="view_results">View Results</string>
+    <string name="take_quiz">Take Quiz</string>
+    <string name="exit_quiz">Exit quiz</string>
+    <string name="logout">Logout</string>
+    <string name="share">Share</string>
+    <string name="previous">Previous</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="okay">Okay</string>
+    <string name="hello">"Hello, %1s"</string>
+    <string name="correct">Correct:</string>
+    <string name="wrong">"Wrong: "</string>
+    <string name="result">Result:</string>
+    <string name="view_performance">View Performance</string>
+</resources>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".ui.ResultFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/completeGif"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="4"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/completeGif"/>
+
+    <TextView
+        android:id="@+id/correctLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/correct"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:gravity="end"
+        app:layout_constraintEnd_toStartOf="@id/correctCount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ratingBar" />
+
+    <TextView
+        android:id="@+id/correctCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/correctLabel"
+        app:layout_constraintTop_toBottomOf="@id/ratingBar"
+        tools:text="4" />
+
+    <TextView
+        android:id="@+id/wrongLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:gravity="end"
+        android:text="@string/wrong"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/wrongCount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/correctLabel" />
+
+    <TextView
+        android:id="@+id/wrongCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/correctLabel"
+        app:layout_constraintTop_toBottomOf="@id/correctLabel"
+        tools:text="4" />
+
+    <TextView
+        android:id="@+id/resultLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:gravity="end"
+        android:text="@string/result"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/wrongCount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wrongLabel" />
+
+    <TextView
+        android:id="@+id/resultCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/resultLabel"
+        app:layout_constraintTop_toBottomOf="@id/wrongLabel"
+        tools:text="4" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/next_background"
+        android:text="@string/view_performance"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:id="@+id/btnViewPerformance"
+        android:textSize="23sp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resultLabel" />
+</androidx.constraintlayout.widget.ConstraintLayout>
