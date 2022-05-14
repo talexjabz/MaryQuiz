@@ -13,4 +13,11 @@
         tools:listitem="@layout/performance_item"
         tools:itemCount="10"/>
 
+    <ImageView
+        android:visibility="gone"
+        android:contentDescription="@string/empty_results"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/emptyList"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

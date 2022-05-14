@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/purple_500"
-        android:text="@string/view_results"
+        android:text="@string/view_performance"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="23sp"

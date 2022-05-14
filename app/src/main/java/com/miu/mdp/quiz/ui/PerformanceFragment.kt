@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.miu.mdp.quiz.R
 import com.miu.mdp.quiz.databinding.FragmentPerformanceBinding
 import com.miu.mdp.quiz.ui.adapter.PerformanceAdapter
@@ -22,11 +24,19 @@ class PerformanceFragment : BaseFragment<FragmentPerformanceBinding>() {
 
         with(binding) {
             viewModel?.getUserPerformance()?.observe(viewLifecycleOwner) { result ->
-                performanceResultList.layoutManager = LinearLayoutManager(
-                    requireContext(),
-                    LinearLayoutManager.VERTICAL, false
-                )
-                performanceResultList.adapter = PerformanceAdapter(result)
+                if (result.isEmpty()) {
+                    Glide.with(this@PerformanceFragment)
+                        .load("https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png")
+                        .into(binding.emptyList)
+                    binding.emptyList.isVisible = true
+                } else {
+                    performanceResultList.layoutManager = LinearLayoutManager(
+                        requireContext(),
+                        LinearLayoutManager.VERTICAL, false
+                    )
+                    performanceResultList.adapter = PerformanceAdapter(result)
+                    binding.emptyList.isVisible = false
+                }
             }
         }
     }

@@ -63,9 +63,23 @@ class QuestionsRepoImpl(
             )
         )
 
+        val question5 = Question(
+            question = "Which are the advantages of view models",
+            type = "check",
+            checkAnswer = CheckAnswer(
+                options = listOf(
+                    "With a view model, you don't need an activity class",
+                    "Help app survive configuration changes",
+                    "Lift UI setup from activities",
+                    "Must include a context to run smoothly"
+                ),
+                correct = listOf(1, 2)
+            )
+        )
+
         CoroutineScope(dispatcher).launch {
             questionDao.deleteAllQuestions()
-            questionDao.insertQuestion(question1, question2, question3, question4)
+            questionDao.insertQuestion(question1, question2, question3, question4, question5)
         }
     }
 
