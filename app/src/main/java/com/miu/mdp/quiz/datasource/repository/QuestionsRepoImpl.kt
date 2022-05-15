@@ -3,6 +3,7 @@ package com.miu.mdp.quiz.datasource.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.miu.mdp.quiz.datasource.dao.QuestionDao
+import com.miu.mdp.quiz.datasource.dao.QuestionHistoryDao
 import com.miu.mdp.quiz.datasource.dao.ResultDao
 import com.miu.mdp.quiz.entity.*
 import kotlinx.coroutines.CoroutineScope
@@ -12,7 +13,8 @@ import kotlin.coroutines.CoroutineContext
 
 class QuestionsRepoImpl(
     private val questionDao: QuestionDao,
-    private val resultDao: ResultDao
+    private val resultDao: ResultDao,
+    private val questionHistoryDao: QuestionHistoryDao
 ) : QuestionsRepository {
 
     override fun generateQuestions(dispatcher: CoroutineContext) {
@@ -115,4 +117,14 @@ class QuestionsRepoImpl(
         return resultDao.getResults(userId)
     }
 
+    override suspend fun saveQuestionAnswerHistory(userId: String, questionHistory: Set<QuestionAnswerHistory>) {
+        questionHistory.forEach {
+            it.userId = userId
+            questionHistoryDao.saveQuestionHistory(it)
+        }
+    }
+
+    override fun getQuestionAnswerHistory(userId: String): LiveData<List<QuestionAnswerHistory>> {
+        return questionHistoryDao.getQuestionHistory(userId)
+    }
 }

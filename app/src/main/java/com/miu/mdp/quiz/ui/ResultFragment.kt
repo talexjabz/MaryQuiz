@@ -36,6 +36,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
                 btnViewPerformance.setOnClickListener {
                     findNavController().navigate(ResultFragmentDirections.actionResultFragmentToPerformanceFragment())
                 }
+                btnTryAgain.setOnClickListener {
+                    findNavController().navigate(ResultFragmentDirections.actionResultFragmentToScanRoomFragment())
+                }
             }
         }
     }

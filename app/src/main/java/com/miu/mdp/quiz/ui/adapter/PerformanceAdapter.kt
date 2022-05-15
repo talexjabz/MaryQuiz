@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.mdp.quiz.databinding.PerformanceItemBinding
-import com.miu.mdp.quiz.entity.Result
+import com.miu.mdp.quiz.entity.QuestionAnswerHistory
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PerformanceAdapter(
-    private val resultList: List<Result>
+    private val resultList: List<QuestionAnswerHistory>
 ) : RecyclerView.Adapter<PerformanceAdapter.PerformanceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PerformanceViewHolder {
@@ -27,11 +27,10 @@ class PerformanceAdapter(
 
     class PerformanceViewHolder(private val itemBinder: PerformanceItemBinding) : RecyclerView.ViewHolder(itemBinder.root) {
         @SuppressLint("SetTextI18n")
-        fun configure(result: Result) {
-            val simpleFormatter = SimpleDateFormat("MMM/dd/yyyy", Locale.ENGLISH)
-            itemBinder.correct.text = "Correct ${result.correct}"
-            itemBinder.wrong.text = "Wrong ${result.wrong}"
-            itemBinder.date.text = "On ${simpleFormatter.format(result.date)}"
+        fun configure(history: QuestionAnswerHistory) {
+            itemBinder.question.text = history.question
+            itemBinder.answered.text = "Your answer: ${history.userAnswer}"
+            itemBinder.correct.text = "Correct answer: ${history.correctAnswer}"
         }
     }
 }

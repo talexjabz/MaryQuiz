@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
+import com.google.gson.Gson
 import com.miu.mdp.quiz.databinding.FragmentQnRadioBinding
 import com.miu.mdp.quiz.entity.Question
+import com.miu.mdp.quiz.entity.QuestionAnswerHistory
 import com.miu.mdp.quiz.ui.BaseFragment
-import java.util.*
 
 class QnRadioFragment : BaseFragment<FragmentQnRadioBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentQnRadioBinding
@@ -43,7 +43,12 @@ class QnRadioFragment : BaseFragment<FragmentQnRadioBinding>() {
                     if (radioButtonId != -1) {//Update score.
                         viewModel?.updateScore(
                             position!!,
-                            question?.radioAnswer?.computeAnswer(childId)!!
+                            question?.radioAnswer?.computeAnswer(childId)!!,
+                            QuestionAnswerHistory(
+                                question = question.question,
+                                userAnswer = Gson().toJson(question.radioAnswer.options[childId]),
+                                correctAnswer = Gson().toJson(question.radioAnswer.correct)
+                            )
                         )
                     }
                 }

@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.miu.mdp.quiz.datasource.dao.QuestionDao
+import com.miu.mdp.quiz.datasource.dao.QuestionHistoryDao
 import com.miu.mdp.quiz.datasource.dao.ResultDao
 import com.miu.mdp.quiz.datasource.dao.UserDao
 import com.miu.mdp.quiz.entity.*
@@ -19,7 +20,8 @@ import com.miu.mdp.quiz.entity.converter.ListConverter
         RadioAnswer::class,
         Question::class,
         CheckAnswer::class,
-        Result::class
+        Result::class,
+        QuestionAnswerHistory::class
     ],
     version = 1,
     exportSchema = false
@@ -32,6 +34,7 @@ abstract class QuizDB : RoomDatabase() {
     abstract fun getUserDao(): UserDao
     abstract fun getResultDao(): ResultDao
     abstract fun getQuestionDao(): QuestionDao
+    abstract fun getQuestionAnswerHistoryDao():QuestionHistoryDao
 
     companion object {
         @Volatile
@@ -39,15 +42,15 @@ abstract class QuizDB : RoomDatabase() {
         private val LOCK = Any()
 
         operator fun invoke(context: Context): QuizDB {
-            return instance?: synchronized(LOCK) {
-                instance?: buildDB(context).also {
+            return instance ?: synchronized(LOCK) {
+                instance ?: buildDB(context).also {
                     instance = it
                 }
             }
         }
 
         private fun buildDB(context: Context) = Room
-            .databaseBuilder(context, QuizDB::class.java, "Quiz DB")
+            .databaseBuilder(context, QuizDB::class.java, "OurDB")
             .build()
     }
 }

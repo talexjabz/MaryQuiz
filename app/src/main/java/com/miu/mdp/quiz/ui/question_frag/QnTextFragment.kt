@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.gson.Gson
 import com.miu.mdp.quiz.databinding.FragmentQnTextBinding
 import com.miu.mdp.quiz.entity.Question
+import com.miu.mdp.quiz.entity.QuestionAnswerHistory
 import com.miu.mdp.quiz.ui.BaseFragment
 
 class QnTextFragment : BaseFragment<FragmentQnTextBinding>() {
@@ -31,7 +33,12 @@ class QnTextFragment : BaseFragment<FragmentQnTextBinding>() {
                     if (answerInput.isNotEmpty()) {//Update score.
                         viewModel?.updateScore(
                             position!!,
-                            question?.textAnswer?.computeAnswer(answerInput)!!
+                            question?.textAnswer?.computeAnswer(answerInput)!!,
+                            QuestionAnswerHistory(
+                                question = question.question,
+                                userAnswer = answerInput,
+                                correctAnswer = Gson().toJson(question.textAnswer.correct)
+                            )
                         )
                     }
                 }

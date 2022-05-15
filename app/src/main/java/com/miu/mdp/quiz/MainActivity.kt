@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
                 UserRepoImpl(quizDB.getUserDao()),
                 QuestionsRepoImpl(
                     quizDB.getQuestionDao(),
-                    quizDB.getResultDao()
+                    quizDB.getResultDao(),
+                    quizDB.getQuestionAnswerHistoryDao()
                 ),
                 application as QuizApplication
             )

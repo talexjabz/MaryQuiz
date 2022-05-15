@@ -12,6 +12,9 @@ import com.bumptech.glide.Glide
 import com.miu.mdp.quiz.R
 import com.miu.mdp.quiz.databinding.FragmentPerformanceBinding
 import com.miu.mdp.quiz.ui.adapter.PerformanceAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class PerformanceFragment : BaseFragment<FragmentPerformanceBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPerformanceBinding
@@ -30,19 +33,23 @@ class PerformanceFragment : BaseFragment<FragmentPerformanceBinding>() {
                         .into(binding.emptyList)
                     binding.emptyList.isVisible = true
                 } else {
-                    performanceResultList.layoutManager = LinearLayoutManager(
-                        requireContext(),
-                        LinearLayoutManager.VERTICAL, false
-                    )
-                    performanceResultList.adapter = PerformanceAdapter(result)
                     binding.emptyList.isVisible = false
                 }
             }
+
+            viewModel?.getQuestionAnswerHistory()?.observe(viewLifecycleOwner) { history ->
+                performanceResultList.layoutManager = LinearLayoutManager(
+                    requireContext(),
+                    LinearLayoutManager.VERTICAL, false
+                )
+                performanceResultList.adapter = PerformanceAdapter(history)
+            }
+
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             R.id.logout -> {
                 viewModel?.logout()
                 findNavController().navigate(PerformanceFragmentDirections.actionPerformanceFragmentToLoginFragment())

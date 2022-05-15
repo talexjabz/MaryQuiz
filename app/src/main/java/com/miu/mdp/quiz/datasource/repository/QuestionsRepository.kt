@@ -13,6 +13,14 @@ interface QuestionsRepository {
         map: Map<Int, Boolean>,
         dispatcher: CoroutineContext = Dispatchers.Main
     ): LiveData<Result>
+    suspend fun saveQuestionAnswerHistory(
+        userId: String,
+        questionHistory: Set<QuestionAnswerHistory>
+    )
+
+    fun getQuestionAnswerHistory(
+        userId: String
+    ): LiveData<List<QuestionAnswerHistory>>
 
     fun getResult(userId: String): LiveData<List<Result>>
 }

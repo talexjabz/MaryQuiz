@@ -8,6 +8,8 @@ import com.google.gson.Gson
 import com.miu.mdp.quiz.QuizApplication
 import com.miu.mdp.quiz.datasource.repository.QuestionsRepository
 import com.miu.mdp.quiz.datasource.repository.UserRepository
+import com.miu.mdp.quiz.entity.QuestionAnswerHistory
+import com.miu.mdp.quiz.entity.Result
 import com.miu.mdp.quiz.entity.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +27,8 @@ class MainViewModel(
         private set
 
     private val currentQuestionScore = mutableMapOf<Int, Boolean>()
+    private val questionAnswerHistory = mutableSetOf<QuestionAnswerHistory>()
+
     private val sharedPrefs = context.getSharedPreferences("quiz_prefs", Context.MODE_PRIVATE)
 
     private var _selectedNext = MutableLiveData<Int>()
@@ -82,8 +86,12 @@ class MainViewModel(
     suspend fun register(name: String, email: String) = userRepository.register(name, email)
 
     fun getAllQuestions() = questionsRepository.getQuestions()
-    fun updateScore(position: Int, isCorrect: Boolean) {
+    fun updateScore(position: Int, isCorrect: Boolean, questionResult: QuestionAnswerHistory) {
         currentQuestionScore[position] = isCorrect
+        if (questionAnswerHistory.contains(questionResult)) {
+            questionAnswerHistory.remove(questionResult)
+        }
+        questionAnswerHistory.add(questionResult)
     }
 
     fun clearQuestions() {
@@ -98,10 +106,19 @@ class MainViewModel(
         _onQnAnswered.postValue(ans)
     }
 
-    fun didCompleteQuiz() =
-        questionsRepository.computeResults(currentUser?.userId!!, currentQuestionScore)
+    fun didCompleteQuiz(): LiveData<Result> {
+
+        CoroutineScope(Dispatchers.Default).launch {
+            questionsRepository.saveQuestionAnswerHistory(currentUser?.userId!!, questionAnswerHistory)
+        }
+        return questionsRepository.computeResults(currentUser?.userId!!, currentQuestionScore)
+    }
 
     fun getUserPerformance() = currentUser?.userId?.let { questionsRepository.getResult(it) }
+
+    fun getQuestionAnswerHistory() = currentUser?.userId?.let {
+        questionsRepository.getQuestionAnswerHistory(it)
+    }
 
 
 }

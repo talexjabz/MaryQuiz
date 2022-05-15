@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_marginTop="2dp"
     android:layout_marginBottom="2dp">
 
@@ -15,9 +15,9 @@
         tools:text="May Something 2002"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/date"/>
+        android:id="@+id/question"/>
     <TextView
         android:layout_weight="1"
         android:background="@color/teal_200"
@@ -25,20 +25,18 @@
         tools:text="May Something 2002"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/correct"/>
+        android:id="@+id/answered"/>
     <TextView
-        android:textColor="@color/white"
         android:layout_weight="1"
-        android:background="@color/purple_200"
         android:padding="8dp"
         tools:text="May Something 2002"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/wrong"/>
+        android:id="@+id/correct"/>
 
 
 </LinearLayout>

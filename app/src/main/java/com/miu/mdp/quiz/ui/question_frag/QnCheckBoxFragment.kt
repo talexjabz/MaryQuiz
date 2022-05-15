@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.gson.Gson
 import com.miu.mdp.quiz.databinding.FragmentQnCheckBoxBinding
 import com.miu.mdp.quiz.entity.Question
+import com.miu.mdp.quiz.entity.QuestionAnswerHistory
 import com.miu.mdp.quiz.ui.BaseFragment
 
 class QnCheckBoxFragment : BaseFragment<FragmentQnCheckBoxBinding>() {
@@ -37,7 +39,12 @@ class QnCheckBoxFragment : BaseFragment<FragmentQnCheckBoxBinding>() {
                     if (answerInput.isNotEmpty()) {//Update score.
                         viewModel?.updateScore(
                             position!!,
-                            question?.checkAnswer?.computeAnswer(answerInput)!!
+                            question?.checkAnswer?.computeAnswer(answerInput)!!,
+                            QuestionAnswerHistory(
+                                question = question.question,
+                                userAnswer = Gson().toJson(answerInput),
+                                correctAnswer = Gson().toJson(question.checkAnswer.correct)
+                            )
                         )
                     }
                 }
