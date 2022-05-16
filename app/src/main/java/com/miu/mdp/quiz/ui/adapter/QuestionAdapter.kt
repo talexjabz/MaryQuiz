@@ -3,7 +3,7 @@ package com.miu.mdp.quiz.ui.adapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.miu.mdp.quiz.entity.Question
+import com.miu.mdp.quiz.domain.Question
 import com.miu.mdp.quiz.ui.question_frag.QnCheckBoxFragment
 import com.miu.mdp.quiz.ui.question_frag.QnRadioFragment
 import com.miu.mdp.quiz.ui.question_frag.QnTextFragment

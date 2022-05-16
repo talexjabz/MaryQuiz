@@ -5,13 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.miu.mdp.quiz.datasource.dao.QuestionDao
-import com.miu.mdp.quiz.datasource.dao.QuestionHistoryDao
-import com.miu.mdp.quiz.datasource.dao.ResultDao
-import com.miu.mdp.quiz.datasource.dao.UserDao
-import com.miu.mdp.quiz.entity.*
-import com.miu.mdp.quiz.entity.converter.DateTypeConverter
-import com.miu.mdp.quiz.entity.converter.ListConverter
+import com.miu.mdp.quiz.domain.*
 
 @Database(
     entities = [
@@ -30,18 +24,18 @@ import com.miu.mdp.quiz.entity.converter.ListConverter
     DateTypeConverter::class,
     ListConverter::class
 )
-abstract class QuizDB : RoomDatabase() {
+abstract class MaryQuizDB : RoomDatabase() {
     abstract fun getUserDao(): UserDao
     abstract fun getResultDao(): ResultDao
     abstract fun getQuestionDao(): QuestionDao
-    abstract fun getQuestionAnswerHistoryDao():QuestionHistoryDao
+    abstract fun getQuestionAnswerHistoryDao(): QuestionHistoryDao
 
     companion object {
         @Volatile
-        private var instance: QuizDB? = null
+        private var instance: MaryQuizDB? = null
         private val LOCK = Any()
 
-        operator fun invoke(context: Context): QuizDB {
+        operator fun invoke(context: Context): MaryQuizDB {
             return instance ?: synchronized(LOCK) {
                 instance ?: buildDB(context).also {
                     instance = it
@@ -50,7 +44,7 @@ abstract class QuizDB : RoomDatabase() {
         }
 
         private fun buildDB(context: Context) = Room
-            .databaseBuilder(context, QuizDB::class.java, "OurDB")
+            .databaseBuilder(context, MaryQuizDB::class.java, "OurDB")
             .build()
     }
 }

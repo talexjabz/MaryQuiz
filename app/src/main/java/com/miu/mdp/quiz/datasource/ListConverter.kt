@@ -1,4 +1,4 @@
-package com.miu.mdp.quiz.entity.converter
+package com.miu.mdp.quiz.datasource
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

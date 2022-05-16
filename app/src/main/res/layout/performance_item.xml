@@ -10,7 +10,7 @@
     <TextView
         android:textColor="@color/white"
         android:layout_weight="1"
-        android:background="@color/purple_200"
+        android:background="@color/pink_200"
         android:padding="8dp"
         tools:text="May Something 2002"
         android:textSize="14sp"

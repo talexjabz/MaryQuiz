@@ -23,8 +23,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/previous"
         android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@drawable/prev_background"
+        android:background="@drawable/default_pink_button_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -35,8 +34,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/skip"
         android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@drawable/skip_background"
+        android:background="@drawable/take_quiz_btn_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/nextButton"
         app:layout_constraintStart_toEndOf="@id/prevButton" />
@@ -49,8 +47,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/next"
         android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@drawable/next_background"
+        android:background="@drawable/default_pink_button_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -11,47 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:id="@+id/quiz_image"
-        android:src="@drawable/quiz_image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_margin="8dp"
-        android:id="@+id/userNameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/quiz_image"
-        tools:text="Hello Student" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_margin="16dp"
         android:id="@+id/viewResultsBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/purple_500"
+        android:background="@drawable/default_pink_button_background"
         android:text="@string/view_performance"
         android:textAllCaps="false"
-        android:textColor="@color/white"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userNameTextView" />
+        app:layout_constraintTop_toBottomOf="@id/quiz_image" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@android:color/holo_green_dark"
+        android:background="@drawable/take_quiz_btn_background"
         android:text="@string/take_quiz"
         android:textAllCaps="false"
-        android:textColor="@color/white"
         android:id="@+id/takeQuizBtn"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"

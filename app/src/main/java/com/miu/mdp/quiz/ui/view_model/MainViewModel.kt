@@ -6,11 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.miu.mdp.quiz.QuizApplication
-import com.miu.mdp.quiz.datasource.repository.QuestionsRepository
-import com.miu.mdp.quiz.datasource.repository.UserRepository
-import com.miu.mdp.quiz.entity.QuestionAnswerHistory
-import com.miu.mdp.quiz.entity.Result
-import com.miu.mdp.quiz.entity.User
+import com.miu.mdp.quiz.datasource.QuestionsRepository
+import com.miu.mdp.quiz.datasource.UserRepository
+import com.miu.mdp.quiz.domain.QuestionAnswerHistory
+import com.miu.mdp.quiz.domain.Result
+import com.miu.mdp.quiz.domain.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -52,10 +52,10 @@ class MainViewModel(
         questionsRepository.generateQuestions()
     }
 
-    fun login(userId: String): LiveData<Boolean> {
+    fun login(email: String): LiveData<Boolean> {
         val isLoggedIn = MutableLiveData<Boolean>()
         CoroutineScope(Dispatchers.Default).launch {
-            val user = userRepository.login(userId)
+            val user = userRepository.login(email)
             if (user != null) {
                 isLoggedIn.postValue(true)
                 currentUser = user
@@ -83,7 +83,20 @@ class MainViewModel(
         saveLoggedIn(null)
     }
 
-    suspend fun register(name: String, email: String) = userRepository.register(name, email)
+    suspend fun register(name: String, email: String): LiveData<Boolean> {
+        val isLoggedIn = MutableLiveData<Boolean>()
+        CoroutineScope(Dispatchers.Default).launch {
+            val user = userRepository.register(name, email)
+            if (user != null) {
+                isLoggedIn.postValue(true)
+                currentUser = user
+                saveLoggedIn(user)
+            } else {
+                isLoggedIn.postValue(false)
+            }
+        }
+        return isLoggedIn
+    }
 
     fun getAllQuestions() = questionsRepository.getQuestions()
     fun updateScore(position: Int, isCorrect: Boolean, questionResult: QuestionAnswerHistory) {

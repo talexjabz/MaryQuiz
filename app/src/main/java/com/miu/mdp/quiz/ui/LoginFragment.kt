@@ -3,6 +3,7 @@ package com.miu.mdp.quiz.ui
 import android.os.Bundle
 import android.view.*
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.miu.mdp.quiz.databinding.FragmentLoginBinding
 
 
@@ -44,6 +45,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     }
                 }
             }
+
+            Glide
+                .with(this@LoginFragment)
+                .load("https://is3-ssl.mzstatic.com/image/thumb/Purple60/v4/50/e8/7c/50e87cd6-2f38-138e-9c33-866b73ac6e95/source/512x512bb.jpg")
+                .into(quizImage)
         }
 
     }

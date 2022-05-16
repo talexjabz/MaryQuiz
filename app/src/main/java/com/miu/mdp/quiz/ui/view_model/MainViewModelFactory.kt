@@ -3,8 +3,8 @@ package com.miu.mdp.quiz.ui.view_model
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.miu.mdp.quiz.QuizApplication
-import com.miu.mdp.quiz.datasource.repository.QuestionsRepository
-import com.miu.mdp.quiz.datasource.repository.UserRepository
+import com.miu.mdp.quiz.datasource.QuestionsRepository
+import com.miu.mdp.quiz.datasource.UserRepository
 
 class MainViewModelFactory(
     private val userRepository: UserRepository,

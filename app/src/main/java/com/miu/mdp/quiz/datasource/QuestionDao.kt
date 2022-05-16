@@ -1,8 +1,8 @@
-package com.miu.mdp.quiz.datasource.dao
+package com.miu.mdp.quiz.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.miu.mdp.quiz.entity.Question
+import com.miu.mdp.quiz.domain.Question
 
 @Dao
 interface QuestionDao {

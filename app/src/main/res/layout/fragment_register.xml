@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:id="@+id/quiz_image"
-        android:src="@drawable/quiz_image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -26,7 +25,7 @@
         android:hint="@string/enter_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView"/>
+        app:layout_constraintTop_toBottomOf="@id/quiz_image"/>
 
     <EditText
         android:layout_marginStart="16dp"
@@ -40,20 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
-        android:layout_marginTop="16dp"
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/register_with_quiz_app"
-        android:textSize="30sp"
-        android:fontFamily="sans-serif"
-        app:layout_constraintTop_toBottomOf="@id/quiz_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:id="@+id/registerButton"
@@ -62,6 +48,7 @@
         android:layout_marginTop="1dp"
         android:textSize="20sp"
         android:text="@string/register"
+        android:background="@drawable/default_pink_button_background"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

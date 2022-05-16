@@ -5,15 +5,15 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.miu.mdp.quiz.datasource.QuizDB
-import com.miu.mdp.quiz.datasource.dao.QuestionDao
-import com.miu.mdp.quiz.datasource.dao.ResultDao
-import com.miu.mdp.quiz.datasource.dao.UserDao
-import com.miu.mdp.quiz.datasource.repository.QuestionsRepoImpl
-import com.miu.mdp.quiz.datasource.repository.QuestionsRepository
-import com.miu.mdp.quiz.datasource.repository.UserRepoImpl
-import com.miu.mdp.quiz.datasource.repository.UserRepository
-import com.miu.mdp.quiz.entity.*
+import com.miu.mdp.quiz.datasource.MaryQuizDB
+import com.miu.mdp.quiz.datasource.QuestionDao
+import com.miu.mdp.quiz.datasource.ResultDao
+import com.miu.mdp.quiz.datasource.UserDao
+import com.miu.mdp.quiz.datasource.QuestionsRepoImpl
+import com.miu.mdp.quiz.datasource.QuestionsRepository
+import com.miu.mdp.quiz.datasource.UserRepoImpl
+import com.miu.mdp.quiz.datasource.UserRepository
+import com.miu.mdp.quiz.domain.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -31,7 +31,7 @@ import java.util.*
 @RunWith(AndroidJUnit4::class)
 class QuizDBTest {
 
-    lateinit var quizDB: QuizDB
+    lateinit var quizDB: MaryQuizDB
     lateinit var userDao: UserDao
     lateinit var resultDao: ResultDao
     lateinit var questionDao: QuestionDao
@@ -46,7 +46,7 @@ class QuizDBTest {
     fun createDB() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         quizDB = Room
-            .inMemoryDatabaseBuilder(context, QuizDB::class.java)
+            .inMemoryDatabaseBuilder(context, MaryQuizDB::class.java)
             .build()
         userDao = quizDB.getUserDao()
         resultDao = quizDB.getResultDao()

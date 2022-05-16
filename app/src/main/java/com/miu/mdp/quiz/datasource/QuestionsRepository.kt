@@ -1,7 +1,7 @@
-package com.miu.mdp.quiz.datasource.repository
+package com.miu.mdp.quiz.datasource
 
 import androidx.lifecycle.LiveData
-import com.miu.mdp.quiz.entity.*
+import com.miu.mdp.quiz.domain.*
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 

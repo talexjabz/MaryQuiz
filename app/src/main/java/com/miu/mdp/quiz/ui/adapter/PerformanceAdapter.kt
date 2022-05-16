@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.mdp.quiz.databinding.PerformanceItemBinding
-import com.miu.mdp.quiz.entity.QuestionAnswerHistory
-import java.text.SimpleDateFormat
-import java.util.*
+import com.miu.mdp.quiz.domain.QuestionAnswerHistory
 
 class PerformanceAdapter(
     private val resultList: List<QuestionAnswerHistory>

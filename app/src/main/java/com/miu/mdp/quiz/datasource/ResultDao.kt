@@ -1,11 +1,11 @@
-package com.miu.mdp.quiz.datasource.dao
+package com.miu.mdp.quiz.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.miu.mdp.quiz.entity.Result
+import com.miu.mdp.quiz.domain.Result
 
 @Dao
 interface ResultDao {

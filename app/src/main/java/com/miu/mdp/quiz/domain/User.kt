@@ -1,4 +1,4 @@
-package com.miu.mdp.quiz.entity
+package com.miu.mdp.quiz.domain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

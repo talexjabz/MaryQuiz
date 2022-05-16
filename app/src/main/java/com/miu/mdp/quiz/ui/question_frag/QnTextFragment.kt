@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.gson.Gson
 import com.miu.mdp.quiz.databinding.FragmentQnTextBinding
-import com.miu.mdp.quiz.entity.Question
-import com.miu.mdp.quiz.entity.QuestionAnswerHistory
+import com.miu.mdp.quiz.domain.Question
+import com.miu.mdp.quiz.domain.QuestionAnswerHistory
 import com.miu.mdp.quiz.ui.BaseFragment
 
 class QnTextFragment : BaseFragment<FragmentQnTextBinding>() {
