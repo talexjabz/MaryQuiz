@@ -1,9 +1,9 @@
 # MaryQuiz
 
-##Video demo link
+## Video demo link
 Link to demo video here: <https://photos.app.goo.gl/kzj7zjQiUobuovN28>
 
-##Screenshots
+## Screenshots
 
 ![Screenshot_20220516_033902](https://user-images.githubusercontent.com/5639815/168553702-c430cd6f-d5b8-4501-b31e-3908b2bceec8.png)
 ![Screenshot_20220516_033637](https://user-images.githubusercontent.com/5639815/168553704-1c682ba4-00e4-4d98-b685-5bcb19e080fb.png)
